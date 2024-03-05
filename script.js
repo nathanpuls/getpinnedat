@@ -1,4 +1,5 @@
-const googleDocs = 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/66/Google_Docs_2020_Logo.svg/174px-Google_Docs_2020_Logo.svg.png';
+const googleDocs =
+  "https://upload.wikimedia.org/wikipedia/commons/thumb/6/66/Google_Docs_2020_Logo.svg/174px-Google_Docs_2020_Logo.svg.png";
 
 const websites = [
   ["Mev.to", "http://dev.to"],
@@ -11,7 +12,9 @@ const websites = [
 
 function generateWebsiteItem(website) {
   const [name, url, altIconUrl] = website;
-  const iconUrl = altIconUrl || `https://t1.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=${url}&size=128`;
+  const iconUrl =
+    altIconUrl ||
+    `https://t1.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=${url}&size=128`;
 
   return `
     <a href="${url}">
@@ -24,6 +27,6 @@ function generateWebsiteItem(website) {
 }
 
 const gridContainer = document.getElementById("websiteGrid");
-websites.forEach(website => {
+websites.forEach((website) => {
   gridContainer.innerHTML += generateWebsiteItem(website);
 });
