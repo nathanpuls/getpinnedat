@@ -44,7 +44,7 @@
             fetch(apiEndpoint, requestOptions)
                 .then(response => response.json())
                 .then(data => {
-                    const matchingRaindrop = data.items.find(raindrop => raindrop.note === noteToMatch);
+                    const matchingRaindrop = data.items.find(raindrop => raindrop.note.toLowerCase() === noteToMatch);
 
                     if (matchingRaindrop) {
                         // Redirect based on the matched raindrop note
