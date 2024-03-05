@@ -24,6 +24,7 @@
         const urlParams = new URLSearchParams(window.location.search);
         let noteToMatch = urlParams.get('note'); // Get the 'note' parameter from the URL
         //noteToMatch = 'yahoo';
+        noteToMatch = noteToMatch.toLowerCase();
 
         if (!noteToMatch) {
             console.error("Note parameter is missing in the URL.");
