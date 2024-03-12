@@ -68,6 +68,7 @@
             copyButton.addEventListener("click", () => {
               // Check if item.note exists
               if (item.note) {
+                item.note = item.note.replace(/ /g, '+');
                 copyToClipboard(`https://pinned.at/${item.note}`);
               } else {
                 // If item.note does not exist, use item.link
