@@ -48,6 +48,8 @@
           // Sort items by date (assuming items have a 'created' timestamp)
           data.items.sort((a, b) => new Date(b.created) - new Date(a.created));
 
+          
+
           // Display links in a list
           const linkList = document.createElement("ul");
 
@@ -66,16 +68,24 @@
 
             copyButton.className = "copy-button";
             copyButton.addEventListener("click", () => {
+              item.note = item.note.toLowerCase();
               // Check if item.note exists
               if (item.note) {
                 item.note = item.note.replace(/ /g, '+');
                 copyToClipboard(`https://pinned.at/${item.note}`);
+                console.log(`https://pinned.at/${item.note}`);
+                
+                
+                
               } else {
                 // If item.note does not exist, use item.link
                 copyToClipboard(item.link);
+                console.log(item.link);
+                
               }
 
               showNotification();
+              
             });
 
             listItem.appendChild(copyButton);
