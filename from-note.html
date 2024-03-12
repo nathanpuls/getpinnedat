@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Pinned.at</title>
+    <title>note.ends.at</title>
     <link
       rel="stylesheet"
       href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap"
@@ -21,7 +21,7 @@
         alt="logo"
         style="margin-right: 10px; margin-left: 5px"
       />
-      Pinned.at
+      Note
     </h3>
 
     <div id="notification">Copied link</div>
@@ -30,7 +30,7 @@
 
     <script>
       // JavaScript code
-      const collectionId = 42287170;
+      const collectionId = 42476977;
       const apiEndpoint = `https://api.raindrop.io/rest/v1/raindrops/${collectionId}`;
       const authToken = "Bearer 0f1d16de-033f-4d92-9a50-e37992ed9b94";
 
@@ -56,7 +56,7 @@
           data.items.forEach((item) => {
             const listItem = document.createElement("li");
             const link = document.createElement("a");
-            link.href = item.link;
+            link.href = `https://note.ends.at/${item.note}`;
             link.textContent = item.title || item.link; // Use the title if available, otherwise use the link
 
             const copyButton = document.createElement("button");
@@ -65,16 +65,18 @@
             const noteButton = document.createElement("button");
             noteButton.innerHTML = '<img src="note.svg" alt="note">';
 
+              // '<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" width="24" height="24" stroke-width="1.5" stroke="black">' +
+              // '<path stroke-linecap="round" stroke-linejoin="round" d="M15.666 3.888A2.25 2.25 0 0 0 13.5 2.25h-3c-1.03 0-1.9.693-2.166 1.638m7.332 0c.055.194.084.4.084.612v0a.75.75 0 0 1-.75.75H9a.75.75 0 0 1-.75-.75v0c0-.212.03-.418.084-.612m7.332 0c.646.049 1.288.11 1.927.184 1.1.128 1.907 1.077 1.907 2.185V19.5a2.25 2.25 0 0 1-2.25 2.25H6.75A2.25 2.25 0 0 1 4.5 19.5V6.257c0-1.108.806-2.057 1.907-2.185a48.208 48.208 0 0 1 1.927-.184" />' +
+              // "</svg>";
+
             copyButton.className = "copy-button";
             copyButton.addEventListener("click", () => {
               item.note = item.note.toLowerCase();
               // Check if item.note exists
               if (item.note) {
                 item.note = item.note.replace(/ /g, '+');
-                copyToClipboard(`https://pinned.at/${item.note}`);
-                console.log(`https://pinned.at/${item.note}`);
-                
-                
+                copyToClipboard(`https://note.ends.at/${item.note}`);
+                console.log(`https://note.ends.at/${item.note}`);
                 
               } else {
                 // If item.note does not exist, use item.link
@@ -92,15 +94,13 @@
               
               // Check if item.note exists
               if (item.note) {
-                window.location.href = `/note/?title=${item.title}`;
+                window.location.href = `/note/view/?title=${item.title}`;
               }
             });
 
             listItem.appendChild(copyButton);
             listItem.appendChild(link);
-            if (item.note) {
             listItem.appendChild(noteButton);
-            }
             linkList.appendChild(listItem);
           });
 
