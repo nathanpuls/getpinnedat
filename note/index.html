@@ -13,14 +13,14 @@
 </head>
 <body>
      <a href='/'>
-    <h3>
-      <img
-        src="../logo.svg"
-        alt="logo"
-        style="margin-right: 10px; margin-left: 5px"
-      />
-      Pinned.at
-    </h3>
+      <h3 style="font-weight: 400">
+        <img
+          src="../logo.svg"
+          alt="logo"
+          style="margin-right: 10px; margin-left: 5px"
+        />
+        PINNED.AT
+      </h3>
         </a>
     
     <div id="notification">Copied note</div>
@@ -59,6 +59,7 @@ fetch(apiEndpoint, requestOptions)
       const linkList = document.createElement("ul");
       const listItem = document.createElement("li");
       const link = document.createElement("p");
+      
       h1.textContent = matchingItem.title;
       link.textContent = matchingItem.note || matchingItem.title;
 
@@ -77,6 +78,7 @@ fetch(apiEndpoint, requestOptions)
         }
         showNotification();
       });
+      
 
       document.body.appendChild(h1);
       listItem.appendChild(link);
@@ -85,6 +87,9 @@ fetch(apiEndpoint, requestOptions)
       document.body.appendChild(linkList);
     } else {
       console.error("No matching item found for the provided title parameter.");
+      const noNote = document.createElement('h1');
+      noNote.textContent = 'Nothing here';
+      document.body.appendChild(noNote);
     }
   })
   .catch((error) => {
