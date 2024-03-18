@@ -13,6 +13,7 @@
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
     <link rel="manifest" href="/site.webmanifest" />
     <link rel="stylesheet" href="css.css" />
+    
   </head>
   <body>
     
@@ -59,10 +60,11 @@
             const listItem = document.createElement("li");
             const link = document.createElement("a");
             link.href = item.link;
+            link.target = '_blank';
             link.textContent = item.title || item.link; // Use the title if available, otherwise use the link
 
             const copyButton = document.createElement("button");
-            copyButton.innerHTML = '<img src="copy.svg" alt="Copy">';
+            copyButton.innerHTML = '<img src="clone.svg" alt="Copy">';
 
             const noteButton = document.createElement("button");
             noteButton.innerHTML = '<img src="note.svg" alt="note">';
@@ -90,7 +92,7 @@
             });
 
             noteButton.className = "note-button";
-            noteButton.addEventListener("click", () => {
+            noteButton.addEventListener("mouseover", () => {
               
               // Check if item.note exists
               if (item.note) {
