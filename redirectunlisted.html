@@ -29,7 +29,7 @@
         if (!noteToMatch) {
             console.error("Note parameter is missing in the URL.");
         } else {
-            const collectionId = 42287170; // Replace with your actual collection ID
+            const collectionId = 42647193; // Replace with your actual collection ID
             const apiEndpoint = `https://api.raindrop.io/rest/v1/raindrops/${collectionId}`;
             const authToken = "Bearer 0f1d16de-033f-4d92-9a50-e37992ed9b94";
 
@@ -51,9 +51,8 @@
                         window.location.href = matchingRaindrop.link;
                     } else {
                         console.error("No matching raindrop found for the provided note.");
-                        // window.location.href = 'http://g.co';
+                        window.location.href = '/404';
                         
-                        window.location.href = `/redirectunlisted.html?note=${noteToMatch}`;
                     }
                 })
                 .catch(error => {
